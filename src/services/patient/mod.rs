@@ -1,14 +1,18 @@
-use crate::models::Booking;
+use crate::models::Patient;
 use std::io;
 
 pub fn run() {
-    println!("診察券番号を入力してください");
-    let mut patient_id = String::new();
-    io::stdin()
-        .read_line(&mut patient_id)
-        .expect("入力された値が不正です");
-    let patient_id: u32 = patient_id.trim().parse().expect("数値で入力してください");
-    let booking = Booking::new(patient_id);
+    println!("お名前を入力してください");
+    let mut name = String::new();
+    io::stdin().read_line(&mut name).unwrap();
+    let name = name.lines().collect::<String>();
 
-    println!("{:?}", booking);
+    println!("生年月日を入力してください（例: 2019/05/24））");
+    let mut birthday = String::new();
+    io::stdin().read_line(&mut birthday).unwrap();
+    let birthday = birthday.lines().collect::<String>();
+
+    let patient = Patient::new(name, birthday);
+
+    println!("{:?}", patient);
 }
