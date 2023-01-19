@@ -1,3 +1,25 @@
+use chrono::{Datelike, NaiveDate, Utc};
+
+#[derive(Debug)]
+pub struct Patient {
+    id: u32,
+    name: String,
+    birthday: NaiveDate,
+    registration_date: NaiveDate,
+}
+
+impl Patient {
+    pub fn new(name: String, birthday: NaiveDate) -> Self {
+        let now = Utc::now();
+        Patient {
+            id: 0,
+            name,
+            birthday,
+            registration_date: NaiveDate::from_ymd_opt(now.year(), now.month(), now.day()).unwrap(),
+        }
+    }
+}
+
 #[derive(Debug)]
 pub struct Booking {
     patient_id: u32,
@@ -6,22 +28,5 @@ pub struct Booking {
 impl Booking {
     pub fn new(patient_id: u32) -> Self {
         Booking { patient_id }
-    }
-}
-
-#[derive(Debug)]
-pub struct Patient {
-    id: u32,
-    name: String,
-    birthday: String,
-}
-
-impl Patient {
-    pub fn new(name: String, birthday: String) -> Self {
-        Patient {
-            id: 0,
-            name,
-            birthday,
-        }
     }
 }

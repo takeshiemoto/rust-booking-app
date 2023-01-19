@@ -1,4 +1,5 @@
 use crate::models::Patient;
+use chrono::{DateTime, NaiveDate};
 use std::io;
 
 pub fn run() {
@@ -11,6 +12,7 @@ pub fn run() {
     let mut birthday = String::new();
     io::stdin().read_line(&mut birthday).unwrap();
     let birthday = birthday.lines().collect::<String>();
+    let birthday = NaiveDate::parse_from_str(&birthday, "%Y/%m/%d").unwrap();
 
     let patient = Patient::new(name, birthday);
 

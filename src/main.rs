@@ -1,7 +1,6 @@
 mod models;
 mod services;
 
-use crate::models::{Booking, Patient};
 use std::io;
 
 fn main() {
