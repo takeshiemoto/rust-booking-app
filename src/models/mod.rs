@@ -1,6 +1,7 @@
 use chrono::{Datelike, NaiveDate, Utc};
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Patient {
     id: u32,
     name: String,
